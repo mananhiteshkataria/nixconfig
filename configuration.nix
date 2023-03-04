@@ -70,7 +70,6 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
@@ -94,7 +93,9 @@
   environment.sessionVariables = rec {
     PF_INFO = "ascii title os host kernel uptime pkgs memory shell editor wm de palette";
   };
+  #programs firefox for GsConnect (Not Working For Me)
   programs.firefox.nativeMessagingHosts.gsconnect = true;
+  #Programs Neovim for me
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
   # Allow unfree packages
@@ -134,7 +135,9 @@
     rsync
     strace
   ];
+  #removing xterm
   services.xserver.excludePackages = [ pkgs.xterm ];
+  #removing gnome packages i do not need 
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
     gnome-tour
@@ -150,7 +153,11 @@
   ]);
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
+  #enabling mtr for ping and all the good networking stuff
   programs.mtr.enable = true;
+
+  #enabling gnupg for gopass/pass decryption 
+  
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
