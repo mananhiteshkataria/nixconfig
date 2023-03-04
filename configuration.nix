@@ -95,16 +95,15 @@
   };
   #programs firefox for GsConnect (Not Working For Me)
   programs.firefox.nativeMessagingHosts.gsconnect = true;
-  #Programs Neovim for me
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
+  #Programs vim for me
+  programs.vim.defaultEditor = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   programs.browserpass.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
+    vim
     wget
     brave
     stremio
@@ -119,8 +118,11 @@
     gnomeExtensions.user-themes
     vscodium
     browserpass
+    binutils
     libgccjit
-    gnumake
+    ripgrep
+    libstdcxx5
+    cmakeWithGui
     nixpkgs-fmt
     pinentry
     pinentry-curses
@@ -157,7 +159,7 @@
   programs.mtr.enable = true;
 
   #enabling gnupg for gopass/pass decryption 
-  
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
